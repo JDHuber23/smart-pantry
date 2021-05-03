@@ -1,24 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dRq-II-Gg8">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="XcJ-u3-lhh">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <navigationController id="dRq-II-Gg8" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="L1F-Ve-qLX">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dkg-9Z-hu3" kind="relationship" relationship="rootViewController" id="m08-Ec-tkv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EKb-Rs-xKj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1777" y="-602"/>
+        </scene>
+        <!--Smart Pantry-->
+        <scene sceneID="bVr-b4-LLL">
+            <objects>
+                <viewController id="dkg-9Z-hu3" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rkI-IA-dz7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tZ7-as-Ede">
+                                <rect key="frame" x="20" y="212" width="374" height="32"/>
+                                <segments>
+                                    <segment title="All Items"/>
+                                    <segment title="Pantry"/>
+                                    <segment title="Fridge"/>
+                                    <segment title="Freezer"/>
+                                </segments>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dlw-xs-hFc">
+                                <rect key="frame" x="20" y="251" width="374" height="611"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFK-Kl-pJl">
+                                <rect key="frame" x="80" y="145" width="87" height="39"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="22"/>
+                                <state key="normal" title="I cooked!">
+                                    <color key="titleColor" systemColor="systemBlueColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0l-Bm-ejl">
+                                <rect key="frame" x="263" y="145" width="46" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="I ate!"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bj2-BI-yrM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BFK-Kl-pJl" firstAttribute="top" secondItem="bj2-BI-yrM" secondAttribute="top" constant="23" id="0XU-kz-zSb"/>
+                            <constraint firstItem="Dlw-xs-hFc" firstAttribute="bottom" secondItem="bj2-BI-yrM" secondAttribute="bottom" id="118-ye-DjJ"/>
+                            <constraint firstItem="bj2-BI-yrM" firstAttribute="trailing" secondItem="Dlw-xs-hFc" secondAttribute="trailing" constant="20" id="3MO-Y6-2ON"/>
+                            <constraint firstItem="bj2-BI-yrM" firstAttribute="trailing" secondItem="s0l-Bm-ejl" secondAttribute="trailing" constant="105" id="4ay-0T-xC9"/>
+                            <constraint firstItem="Dlw-xs-hFc" firstAttribute="leading" secondItem="bj2-BI-yrM" secondAttribute="leading" constant="20" id="FOz-2h-sCu"/>
+                            <constraint firstItem="bj2-BI-yrM" firstAttribute="trailing" secondItem="tZ7-as-Ede" secondAttribute="trailing" constant="20" id="Fpt-bq-cRi"/>
+                            <constraint firstItem="BFK-Kl-pJl" firstAttribute="leading" secondItem="bj2-BI-yrM" secondAttribute="leading" constant="80" id="Fzq-4H-cbK"/>
+                            <constraint firstItem="tZ7-as-Ede" firstAttribute="leading" secondItem="bj2-BI-yrM" secondAttribute="leading" constant="20" id="Q7n-BJ-U6W"/>
+                            <constraint firstItem="Dlw-xs-hFc" firstAttribute="top" secondItem="tZ7-as-Ede" secondAttribute="bottom" constant="8" symbolic="YES" id="SMq-RJ-isD"/>
+                            <constraint firstItem="s0l-Bm-ejl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BFK-Kl-pJl" secondAttribute="trailing" constant="8" symbolic="YES" id="TPP-Lv-inl"/>
+                            <constraint firstItem="tZ7-as-Ede" firstAttribute="top" secondItem="bj2-BI-yrM" secondAttribute="top" constant="90" id="UkW-jF-U4u"/>
+                            <constraint firstItem="s0l-Bm-ejl" firstAttribute="top" secondItem="bj2-BI-yrM" secondAttribute="top" constant="23" id="wA3-CS-3kC"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Smart Pantry" prompt="Welcome To" id="1uo-Qf-juF">
+                        <barButtonItem key="leftBarButtonItem" title="Profile" image="person.fill.questionmark" catalog="system" style="plain" id="pFk-nz-77X"/>
+                        <barButtonItem key="rightBarButtonItem" title="Recipes" image="filemenu.and.selection" catalog="system" style="plain" id="5gs-OE-8XK"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TED-4T-Srb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1023.1884057971015" y="-602.00892857142856"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="filemenu.and.selection" catalog="system" width="128" height="93"/>
+        <image name="person.fill.questionmark" catalog="system" width="128" height="104"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
