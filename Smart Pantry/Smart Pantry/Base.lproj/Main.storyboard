@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="-1777" y="-602"/>
         </scene>
-        <!--Smart Pantry-->
+        <!--My Kitchen-->
         <scene sceneID="bVr-b4-LLL">
             <objects>
                 <viewController id="dkg-9Z-hu3" customClass="ViewController" customModule="Smart_Pantry" customModuleProvider="target" sceneMemberID="viewController">
@@ -71,6 +71,9 @@
                                 <rect key="frame" x="301" y="145" width="93" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Add Food"/>
+                                <connections>
+                                    <action selector="addFood:" destination="dkg-9Z-hu3" eventType="touchUpInside" id="2Ff-Jy-AHi"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bj2-BI-yrM"/>
@@ -93,14 +96,54 @@
                             <constraint firstItem="s0l-Bm-ejl" firstAttribute="top" secondItem="bj2-BI-yrM" secondAttribute="top" constant="23" id="wA3-CS-3kC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Smart Pantry" prompt="Welcome To" id="1uo-Qf-juF">
-                        <barButtonItem key="leftBarButtonItem" title="Profile" image="person.fill.questionmark" catalog="system" style="plain" id="pFk-nz-77X"/>
-                        <barButtonItem key="rightBarButtonItem" title="Recipes" image="filemenu.and.selection" catalog="system" style="plain" id="5gs-OE-8XK"/>
+                    <navigationItem key="navigationItem" title="My Kitchen" prompt="Smart Pantry" id="1uo-Qf-juF">
+                        <barButtonItem key="leftBarButtonItem" title="Profile" image="person.fill.questionmark" catalog="system" style="plain" id="pFk-nz-77X">
+                            <connections>
+                                <segue destination="IaO-lA-mUz" kind="show" id="TAc-wI-NOo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Recipes" image="filemenu.and.selection" catalog="system" style="plain" id="5gs-OE-8XK">
+                            <connections>
+                                <segue destination="Z53-3w-zHo" kind="show" id="aI4-6l-eX5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TED-4T-Srb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1023.1884057971015" y="-602.00892857142856"/>
+        </scene>
+        <!--Recipes-->
+        <scene sceneID="dvL-H0-5zu">
+            <objects>
+                <viewController id="Z53-3w-zHo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zGt-mL-WHj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="sE6-C6-4iT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Recipes" prompt="Smart Pantry" id="cFB-WV-dhn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nbw-p9-pXA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-51" y="-315"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="Tod-ky-5v0">
+            <objects>
+                <viewController id="IaO-lA-mUz" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dmo-67-m3m">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="5OV-Dk-2FQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Account" prompt="Smart Pantry" id="AZr-jz-zwS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xS9-t5-RMB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-36" y="-982"/>
         </scene>
     </scenes>
     <resources>
