@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		333DE5EA264099FB002C9584 /* FoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333DE5E9264099FB002C9584 /* FoodItem.swift */; };
 		333F3B5A263DDF6F00632AD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F3B59263DDF6F00632AD7 /* AppDelegate.swift */; };
 		333F3B5C263DDF6F00632AD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F3B5B263DDF6F00632AD7 /* SceneDelegate.swift */; };
 		333F3B5E263DDF6F00632AD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F3B5D263DDF6F00632AD7 /* ViewController.swift */; };
@@ -37,7 +36,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		333DE5E9264099FB002C9584 /* FoodItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItem.swift; sourceTree = "<group>"; };
 		333F3B56263DDF6F00632AD7 /* Smart Pantry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Pantry.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		333F3B59263DDF6F00632AD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		333F3B5B263DDF6F00632AD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				333F3B67263DDF7300632AD7 /* LaunchScreen.storyboard */,
 				333F3B6A263DDF7300632AD7 /* Info.plist */,
 				333F3B62263DDF6F00632AD7 /* Smart_Pantry.xcdatamodeld */,
-				333DE5E9264099FB002C9584 /* FoodItem.swift */,
 			);
 			path = "Smart Pantry";
 			sourceTree = "<group>";
@@ -268,7 +265,6 @@
 				333F3B64263DDF6F00632AD7 /* Smart_Pantry.xcdatamodeld in Sources */,
 				333F3B5A263DDF6F00632AD7 /* AppDelegate.swift in Sources */,
 				333F3B5C263DDF6F00632AD7 /* SceneDelegate.swift in Sources */,
-				333DE5EA264099FB002C9584 /* FoodItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
