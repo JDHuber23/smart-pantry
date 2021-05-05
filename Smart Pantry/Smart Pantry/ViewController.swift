@@ -112,6 +112,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         food.setValue(sodium, forKey: "sodium")
         self.foodItems.append(food)
         appDelegate.saveContext()
+        self.foodTable.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -124,7 +125,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let foodItem = filteredFoodItems[indexPath.row]
         // configure cell
         cell.textLabel?.text = (foodItem.value(forKey: "name") as! String)
-        cell.detailTextLabel?.text = String(foodItem.value(forKey: "amount") as! String)
+        cell.detailTextLabel?.text = String(foodItem.value(forKey: "amount") as! Int)
         
         return cell
     }
