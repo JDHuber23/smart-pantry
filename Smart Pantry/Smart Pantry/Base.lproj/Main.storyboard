@@ -27,7 +27,7 @@
         <!--Smart Pantry-->
         <scene sceneID="bVr-b4-LLL">
             <objects>
-                <viewController id="dkg-9Z-hu3" sceneMemberID="viewController">
+                <viewController id="dkg-9Z-hu3" customClass="ViewController" customModule="Smart_Pantry" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rkI-IA-dz7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,18 +44,33 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dlw-xs-hFc">
                                 <rect key="frame" x="20" y="251" width="374" height="611"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="nW8-MY-6Hl">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nW8-MY-6Hl" id="uYT-Da-Pa2">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFK-Kl-pJl">
-                                <rect key="frame" x="80" y="145" width="87" height="39"/>
+                                <rect key="frame" x="20" y="145" width="87" height="39"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="22"/>
                                 <state key="normal" title="I cooked!">
                                     <color key="titleColor" systemColor="systemBlueColor"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0l-Bm-ejl">
-                                <rect key="frame" x="263" y="145" width="46" height="39"/>
+                                <rect key="frame" x="184" y="145" width="46" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="I ate!"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2M-dM-8PX">
+                                <rect key="frame" x="301" y="145" width="93" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Add Food"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bj2-BI-yrM"/>
@@ -63,15 +78,18 @@
                         <constraints>
                             <constraint firstItem="BFK-Kl-pJl" firstAttribute="top" secondItem="bj2-BI-yrM" secondAttribute="top" constant="23" id="0XU-kz-zSb"/>
                             <constraint firstItem="Dlw-xs-hFc" firstAttribute="bottom" secondItem="bj2-BI-yrM" secondAttribute="bottom" id="118-ye-DjJ"/>
+                            <constraint firstItem="bj2-BI-yrM" firstAttribute="trailing" secondItem="o2M-dM-8PX" secondAttribute="trailing" constant="20" id="3ML-MW-f0V"/>
                             <constraint firstItem="bj2-BI-yrM" firstAttribute="trailing" secondItem="Dlw-xs-hFc" secondAttribute="trailing" constant="20" id="3MO-Y6-2ON"/>
-                            <constraint firstItem="bj2-BI-yrM" firstAttribute="trailing" secondItem="s0l-Bm-ejl" secondAttribute="trailing" constant="105" id="4ay-0T-xC9"/>
+                            <constraint firstItem="o2M-dM-8PX" firstAttribute="top" secondItem="bj2-BI-yrM" secondAttribute="top" constant="23" id="3bR-ng-ybH"/>
                             <constraint firstItem="Dlw-xs-hFc" firstAttribute="leading" secondItem="bj2-BI-yrM" secondAttribute="leading" constant="20" id="FOz-2h-sCu"/>
                             <constraint firstItem="bj2-BI-yrM" firstAttribute="trailing" secondItem="tZ7-as-Ede" secondAttribute="trailing" constant="20" id="Fpt-bq-cRi"/>
-                            <constraint firstItem="BFK-Kl-pJl" firstAttribute="leading" secondItem="bj2-BI-yrM" secondAttribute="leading" constant="80" id="Fzq-4H-cbK"/>
+                            <constraint firstItem="BFK-Kl-pJl" firstAttribute="leading" secondItem="bj2-BI-yrM" secondAttribute="leading" constant="20" id="Fzq-4H-cbK"/>
                             <constraint firstItem="tZ7-as-Ede" firstAttribute="leading" secondItem="bj2-BI-yrM" secondAttribute="leading" constant="20" id="Q7n-BJ-U6W"/>
                             <constraint firstItem="Dlw-xs-hFc" firstAttribute="top" secondItem="tZ7-as-Ede" secondAttribute="bottom" constant="8" symbolic="YES" id="SMq-RJ-isD"/>
-                            <constraint firstItem="s0l-Bm-ejl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BFK-Kl-pJl" secondAttribute="trailing" constant="8" symbolic="YES" id="TPP-Lv-inl"/>
                             <constraint firstItem="tZ7-as-Ede" firstAttribute="top" secondItem="bj2-BI-yrM" secondAttribute="top" constant="90" id="UkW-jF-U4u"/>
+                            <constraint firstItem="o2M-dM-8PX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s0l-Bm-ejl" secondAttribute="trailing" constant="8" symbolic="YES" id="aMd-1M-ivd"/>
+                            <constraint firstItem="s0l-Bm-ejl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BFK-Kl-pJl" secondAttribute="trailing" constant="8" symbolic="YES" id="h7t-CV-wh3"/>
+                            <constraint firstItem="s0l-Bm-ejl" firstAttribute="centerX" secondItem="rkI-IA-dz7" secondAttribute="centerX" id="jWj-SD-lF4"/>
                             <constraint firstItem="s0l-Bm-ejl" firstAttribute="top" secondItem="bj2-BI-yrM" secondAttribute="top" constant="23" id="wA3-CS-3kC"/>
                         </constraints>
                     </view>
