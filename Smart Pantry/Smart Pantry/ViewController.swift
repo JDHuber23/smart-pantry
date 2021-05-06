@@ -74,7 +74,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 return
             }
             let ings = recipes[0].value(forKey: "ingredients") as! NSArray
-            if let ingredients = ings as? [String] {
+            let objCArray = NSMutableArray(array: ings)
+            if let ingredients = objCArray as NSArray as? [String] {
                 for ingredient in ingredients {
                     let ing = ingredient
                     self.consumeFoodItem(foodName: ing)

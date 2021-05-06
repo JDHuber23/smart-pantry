@@ -23,8 +23,9 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        appDelegate = UIApplication.shared.delegate as? AppDelegate
+        managedObjectContext = appDelegate.persistentContainer.viewContext
+        updateLabels()
     }
     
     func updateLabels() {
