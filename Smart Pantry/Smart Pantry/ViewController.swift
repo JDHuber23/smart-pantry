@@ -26,12 +26,59 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         appDelegate = UIApplication.shared.delegate as? AppDelegate
         managedObjectContext = appDelegate.persistentContainer.viewContext
         filteredFoodItems = fetchFoodItems()
+        initUser()
+    }
+    
+    func initUser() {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "User")
+        var users: [NSManagedObject] = []
+        do {
+            users = try self.managedObjectContext.fetch(fetchRequest)
+        } catch {
+            print("getUsers error: \(error)")
+        }
+        if users.isEmpty {
+            let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: self.managedObjectContext)
+            user.setValue(0, forKey: "carbohydrates")
+            user.setValue(0, forKey: "fat")
+            user.setValue(0, forKey: "sugar")
+            user.setValue(0, forKey: "sodium")
+            user.setValue(0, forKey: "protein")
+            appDelegate.saveContext()
+            self.foodTable.reloadData()
+        }
     }
 
     @IBAction func cookedRecipe(_ sender: Any) {
         let alert = UIAlertController(title: "I cooked!", message: "What recipe did you cook?", preferredStyle: .alert)
         
         // we want to reduce the amount for each food item that was eaten
+        // for simplicity's sake every ingredient uses 1 amount of it
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Recipe Name"
+        }
+        
+        alert.addAction(UIAlertAction(title: "I cooked!", style: .default, handler: { (action) in
+            let recipeName = alert.textFields?[0].text!
+            let fetchPredicate = NSPredicate(format: "name == %@", recipeName!)
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Recipe")
+            fetchRequest.predicate = fetchPredicate
+            var recipes: [NSManagedObject] = []
+            do {
+                recipes = try self.managedObjectContext.fetch(fetchRequest)
+            } catch {
+                print("getRecipe error: \(error)")
+            }
+            if recipes.isEmpty {
+                return
+            }
+            let ingredients = recipes[0].value(forKey: "ingredients") as! NSArray
+            for ingredient in ingredients {
+                self.consumeFoodItem(foodName: ingredient as! String)
+            }
+        }))
+        
     }
     
     @IBAction func ateFood(_ sender: Any) {
@@ -42,22 +89,52 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         alert.addAction(UIAlertAction(title: "I ate!", style: .default, handler: { (action) in
             let foodName = alert.textFields?[0].text!
-            let fetchPredicate = NSPredicate(format: "name == %@", foodName!)
-            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FoodItem")
-            fetchRequest.predicate = fetchPredicate
-            var food: [NSManagedObject] = []
-            do {
-                food = try self.managedObjectContext.fetch(fetchRequest)
-            } catch {
-                print("getFood error: \(error)")
-            }
-            let amount = food[0].value(forKey: "amount")
-            food[0].setValue(amount as! Int - 1, forKey: "amount")
-            self.appDelegate.saveContext()
-            self.foodTable.reloadData()
+            self.consumeFoodItem(foodName: foodName!)
         }))
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    func consumeFoodItem(foodName: String) {
+        let fetchPredicate = NSPredicate(format: "name == %@", foodName)
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FoodItem")
+        fetchRequest.predicate = fetchPredicate
+        var food: [NSManagedObject] = []
+        do {
+            food = try self.managedObjectContext.fetch(fetchRequest)
+        } catch {
+            print("getFood error: \(error)")
+        }
+        if food.isEmpty {
+            return
+        }
+        let amount = food[0].value(forKey: "amount")
+        food[0].setValue(amount as! Int - 1, forKey: "amount")
+        self.updateUser(food: food[0] as! FoodItem)
+        self.appDelegate.saveContext()
+        self.foodTable.reloadData()
+    }
+    
+    func updateUser(food: FoodItem) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "User")
+        var users: [NSManagedObject] = []
+        do {
+            users = try self.managedObjectContext.fetch(fetchRequest)
+        } catch {
+            print("getUsers error: \(error)")
+        }
+        let userSodium = users[0].value(forKey: "sodium")
+        let userFat = users[0].value(forKey: "fat")
+        let userCarbohydrates = users[0].value(forKey: "carbohydrates")
+        let userSugar = users[0].value(forKey: "sugar")
+        let userProtein = users[0].value(forKey: "protein")
+        
+        users[0].setValue(userSodium as! Int32 + food.sodium, forKey: "sodium")
+        users[0].setValue(userFat as! Int32 + food.fat, forKey: "fat")
+        users[0].setValue(userCarbohydrates as! Int32 + food.carbohydrates, forKey: "carbohydrates")
+        users[0].setValue(userSugar as! Int32 + food.sugar, forKey: "sugar")
+        users[0].setValue(userProtein as! Int32 + food.protein, forKey: "protein")
+        
     }
     
     

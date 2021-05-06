@@ -204,18 +204,112 @@
         <!--Account-->
         <scene sceneID="Tod-ky-5v0">
             <objects>
-                <viewController id="IaO-lA-mUz" sceneMemberID="viewController">
+                <viewController id="IaO-lA-mUz" customClass="AccountViewController" customModule="Smart_Pantry" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dmo-67-m3m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sugar consumed: 0 grams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjJ-nl-b9b">
+                                <rect key="frame" x="20" y="142" width="200.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fat consumed: 0 grams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsh-mE-YOm">
+                                <rect key="frame" x="20" y="171" width="179" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Carbohydrates consumed: 0 grams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGe-hZ-gyl">
+                                <rect key="frame" x="20" y="200" width="268" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sodium consumed: 0 grams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkm-dC-fa9">
+                                <rect key="frame" x="20" y="229" width="213.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Protein consumed: 0 grams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Zn-kF-PyT">
+                                <rect key="frame" x="20" y="258" width="209.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qN6-I0-hCP">
+                                <rect key="frame" x="20" y="331" width="374" height="531"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shoppingCell" textLabel="YAP-X0-JPP" detailTextLabel="02K-d2-C8r" style="IBUITableViewCellStyleValue1" id="jVh-EB-0WZ">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jVh-EB-0WZ" id="ef6-NF-xkh">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YAP-X0-JPP">
+                                                    <rect key="frame" x="20" y="12" width="33" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="02K-d2-C8r">
+                                                    <rect key="frame" x="310" y="12" width="44" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shopping List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neh-hj-1bn">
+                                <rect key="frame" x="155" y="302" width="104.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="5OV-Dk-2FQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2Zn-kF-PyT" firstAttribute="top" secondItem="dkm-dC-fa9" secondAttribute="bottom" constant="8" symbolic="YES" id="AO2-fg-xZE"/>
+                            <constraint firstItem="DjJ-nl-b9b" firstAttribute="leading" secondItem="5OV-Dk-2FQ" secondAttribute="leading" constant="20" id="NBb-Hv-N48"/>
+                            <constraint firstItem="neh-hj-1bn" firstAttribute="centerX" secondItem="Dmo-67-m3m" secondAttribute="centerX" id="PMc-fb-tR3"/>
+                            <constraint firstItem="2Zn-kF-PyT" firstAttribute="leading" secondItem="5OV-Dk-2FQ" secondAttribute="leading" constant="20" id="U6U-Jr-zsf"/>
+                            <constraint firstItem="MGe-hZ-gyl" firstAttribute="leading" secondItem="5OV-Dk-2FQ" secondAttribute="leading" constant="20" id="VNF-r7-B6z"/>
+                            <constraint firstItem="bsh-mE-YOm" firstAttribute="leading" secondItem="5OV-Dk-2FQ" secondAttribute="leading" constant="20" id="Zfr-ga-sUj"/>
+                            <constraint firstItem="bsh-mE-YOm" firstAttribute="top" secondItem="DjJ-nl-b9b" secondAttribute="bottom" constant="8" symbolic="YES" id="bSZ-ud-P1d"/>
+                            <constraint firstItem="neh-hj-1bn" firstAttribute="top" secondItem="5OV-Dk-2FQ" secondAttribute="top" constant="180" id="eBs-ct-V1K"/>
+                            <constraint firstItem="5OV-Dk-2FQ" firstAttribute="trailing" secondItem="qN6-I0-hCP" secondAttribute="trailing" constant="20" id="hZx-8k-vyg"/>
+                            <constraint firstItem="qN6-I0-hCP" firstAttribute="bottom" secondItem="5OV-Dk-2FQ" secondAttribute="bottom" id="kmz-Zo-7xH"/>
+                            <constraint firstItem="dkm-dC-fa9" firstAttribute="leading" secondItem="5OV-Dk-2FQ" secondAttribute="leading" constant="20" id="lNq-0h-gBE"/>
+                            <constraint firstItem="qN6-I0-hCP" firstAttribute="top" secondItem="neh-hj-1bn" secondAttribute="bottom" constant="8" symbolic="YES" id="p6w-jO-rXS"/>
+                            <constraint firstItem="DjJ-nl-b9b" firstAttribute="top" secondItem="5OV-Dk-2FQ" secondAttribute="top" constant="20" id="qME-ie-evT"/>
+                            <constraint firstItem="qN6-I0-hCP" firstAttribute="leading" secondItem="5OV-Dk-2FQ" secondAttribute="leading" constant="20" id="wFx-cZ-7Ng"/>
+                            <constraint firstItem="MGe-hZ-gyl" firstAttribute="top" secondItem="bsh-mE-YOm" secondAttribute="bottom" constant="8" symbolic="YES" id="wtS-MQ-49r"/>
+                            <constraint firstItem="dkm-dC-fa9" firstAttribute="top" secondItem="MGe-hZ-gyl" secondAttribute="bottom" constant="8" symbolic="YES" id="z2X-Jw-cKc"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Account" prompt="Smart Pantry" id="AZr-jz-zwS"/>
+                    <connections>
+                        <outlet property="carbohydratesConsumed" destination="MGe-hZ-gyl" id="xgc-QO-DLM"/>
+                        <outlet property="fatConsumed" destination="bsh-mE-YOm" id="7f8-Ci-gro"/>
+                        <outlet property="proteinConsumed" destination="2Zn-kF-PyT" id="tcH-Sm-Dy5"/>
+                        <outlet property="shoppingTable" destination="qN6-I0-hCP" id="n8u-tM-LBs"/>
+                        <outlet property="sodiumConsumed" destination="dkm-dC-fa9" id="bSR-3q-ZQe"/>
+                        <outlet property="sugarConsumed" destination="DjJ-nl-b9b" id="XTI-Vn-gD5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xS9-t5-RMB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-36" y="-982"/>
+            <point key="canvasLocation" x="-36.231884057971016" y="-982.36607142857133"/>
         </scene>
     </scenes>
     <resources>

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		333D815A26437FAF002F5E0A /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333D815926437FAF002F5E0A /* RecipeViewController.swift */; };
+		333D815F26439EF2002F5E0A /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333D815E26439EF2002F5E0A /* AccountViewController.swift */; };
 		333F3B5A263DDF6F00632AD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F3B59263DDF6F00632AD7 /* AppDelegate.swift */; };
 		333F3B5C263DDF6F00632AD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F3B5B263DDF6F00632AD7 /* SceneDelegate.swift */; };
 		333F3B5E263DDF6F00632AD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333F3B5D263DDF6F00632AD7 /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		333D815926437FAF002F5E0A /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		333D815E26439EF2002F5E0A /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		333F3B56263DDF6F00632AD7 /* Smart Pantry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Pantry.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		333F3B59263DDF6F00632AD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		333F3B5B263DDF6F00632AD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				333F3B6A263DDF7300632AD7 /* Info.plist */,
 				333F3B62263DDF6F00632AD7 /* Smart_Pantry.xcdatamodeld */,
 				333D815926437FAF002F5E0A /* RecipeViewController.swift */,
+				333D815E26439EF2002F5E0A /* AccountViewController.swift */,
 			);
 			path = "Smart Pantry";
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			files = (
 				333F3B5E263DDF6F00632AD7 /* ViewController.swift in Sources */,
 				333F3B64263DDF6F00632AD7 /* Smart_Pantry.xcdatamodeld in Sources */,
+				333D815F26439EF2002F5E0A /* AccountViewController.swift in Sources */,
 				333F3B5A263DDF6F00632AD7 /* AppDelegate.swift in Sources */,
 				333F3B5C263DDF6F00632AD7 /* SceneDelegate.swift in Sources */,
 				333D815A26437FAF002F5E0A /* RecipeViewController.swift in Sources */,

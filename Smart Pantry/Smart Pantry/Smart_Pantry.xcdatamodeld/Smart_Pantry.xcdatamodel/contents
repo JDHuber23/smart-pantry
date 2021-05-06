@@ -14,8 +14,16 @@
         <attribute name="ingredients" optional="YES" attributeType="Transformable"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="carbohydrates" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fat" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="protein" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sodium" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sugar" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <elements>
-        <element name="FoodItem" positionX="-63" positionY="-18" width="128" height="28"/>
+        <element name="FoodItem" positionX="-63" positionY="-18" width="128" height="163"/>
         <element name="Recipe" positionX="-54" positionY="-18" width="128" height="73"/>
+        <element name="User" positionX="-36" positionY="18" width="128" height="118"/>
     </elements>
 </model>
