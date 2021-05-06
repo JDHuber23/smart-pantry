@@ -70,6 +70,19 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.recipeTable.reloadData()
     }
     
+    func deleteRecipe(_ food: NSManagedObject) {
+        managedObjectContext.delete(food)
+        appDelegate.saveContext()
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteRecipe(fetchRecipes()[indexPath.row])
+            recipeTable.deleteRows(at: [indexPath], with: .fade)
+            recipeTable.reloadData()
+        }
+    }
+    
     func fetchRecipes() -> [NSManagedObject] {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Recipe")
         var recipes: [NSManagedObject] = []

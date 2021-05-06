@@ -73,12 +73,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if recipes.isEmpty {
                 return
             }
-            let ingredients = recipes[0].value(forKey: "ingredients") as! NSArray
-            for ingredient in ingredients {
-                self.consumeFoodItem(foodName: ingredient as! String)
+            let ings = recipes[0].value(forKey: "ingredients") as! NSArray
+            if let ingredients = ings as? [String] {
+                for ingredient in ingredients {
+                    let ing = ingredient
+                    self.consumeFoodItem(foodName: ing)
+                }
             }
         }))
-        
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func ateFood(_ sender: Any) {
