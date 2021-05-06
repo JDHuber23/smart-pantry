@@ -11,7 +11,6 @@ import CoreData
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // food items
-    var foodItems: [NSManagedObject] = []
     var filteredFoodItems: [NSManagedObject] = []
     var managedObjectContext: NSManagedObjectContext!
     var appDelegate: AppDelegate!
@@ -26,9 +25,42 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         foodTable.dataSource = self
         appDelegate = UIApplication.shared.delegate as? AppDelegate
         managedObjectContext = appDelegate.persistentContainer.viewContext
+        filteredFoodItems = fetchFoodItems()
     }
 
-
+    @IBAction func cookedRecipe(_ sender: Any) {
+        let alert = UIAlertController(title: "I cooked!", message: "What recipe did you cook?", preferredStyle: .alert)
+        
+        // we want to reduce the amount for each food item that was eaten
+    }
+    
+    @IBAction func ateFood(_ sender: Any) {
+        let alert = UIAlertController(title: "I ate!", message: "What food item did you eat?", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Food Item Name"
+        }
+        
+        alert.addAction(UIAlertAction(title: "I ate!", style: .default, handler: { (action) in
+            let foodName = alert.textFields?[0].text!
+            let fetchPredicate = NSPredicate(format: "name == %@", foodName!)
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FoodItem")
+            fetchRequest.predicate = fetchPredicate
+            var food: [NSManagedObject] = []
+            do {
+                food = try self.managedObjectContext.fetch(fetchRequest)
+            } catch {
+                print("getFood error: \(error)")
+            }
+            let amount = food[0].value(forKey: "amount")
+            food[0].setValue(amount as! Int - 1, forKey: "amount")
+            self.appDelegate.saveContext()
+            self.foodTable.reloadData()
+        }))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
     @IBAction func addFood(_ sender: Any) {
         let alert = UIAlertController(title: "Add Food Item", message: "Enter the name, amount, and nutritional values.", preferredStyle: .alert)
         alert.addTextField { (textField) in
@@ -72,18 +104,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func filterFood(_ sender: Any) {
-        var filteredFood = foodItems
+        var filteredFood = fetchFoodItems()
         switch kitchenFilters.selectedSegmentIndex {
             case 0:
-                filteredFood = foodItems
+                filteredFood = fetchFoodItems()
             case 1:
-                filteredFood = foodItems.filter({(f) -> Bool in f.value(forKey: "location") as! String == "Pantry"})
+                filteredFood = fetchFoodItems().filter({(f) -> Bool in f.value(forKey: "location") as! String == "Pantry"})
             case 2:
-                filteredFood = foodItems.filter({(f) -> Bool in f.value(forKey: "location") as! String == "Fridge"})
+                filteredFood = fetchFoodItems().filter({(f) -> Bool in f.value(forKey: "location") as! String == "Fridge"})
             case 3:
-                filteredFood = foodItems.filter({(f) -> Bool in f.value(forKey: "location") as! String == "Freezer"})
+                filteredFood = fetchFoodItems().filter({(f) -> Bool in f.value(forKey: "location") as! String == "Freezer"})
             default:
-                filteredFood = foodItems
+                filteredFood = fetchFoodItems()
         }
         self.filteredFoodItems = filteredFood
         self.foodTable.reloadData()
@@ -110,9 +142,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         food.setValue(sugar, forKey: "sugar")
         food.setValue(fat, forKey: "fat")
         food.setValue(sodium, forKey: "sodium")
-        self.foodItems.append(food)
         appDelegate.saveContext()
         self.foodTable.reloadData()
+    }
+    
+    func deleteFood(_ food: NSManagedObject) {
+        managedObjectContext.delete(food)
+        appDelegate.saveContext()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -121,7 +157,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = foodTable.dequeueReusableCell(withIdentifier: "foodCell", for: indexPath)
-        
         let foodItem = filteredFoodItems[indexPath.row]
         // configure cell
         cell.textLabel?.text = (foodItem.value(forKey: "name") as! String)
@@ -129,5 +164,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteFood(fetchFoodItems()[indexPath.row])
+            foodTable.deleteRows(at: [indexPath], with: .fade)
+            foodTable.reloadData()
+        }
+    }
+    
+    
 }
 

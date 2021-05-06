@@ -80,11 +80,17 @@
                                 <state key="normal" title="I cooked!">
                                     <color key="titleColor" systemColor="systemBlueColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="cookedRecipe:" destination="dkg-9Z-hu3" eventType="touchUpInside" id="MZq-VX-k9g"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0l-Bm-ejl">
                                 <rect key="frame" x="184" y="145" width="46" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="I ate!"/>
+                                <connections>
+                                    <action selector="ateFood:" destination="dkg-9Z-hu3" eventType="touchUpInside" id="DWl-wK-WHh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o2M-dM-8PX">
                                 <rect key="frame" x="301" y="145" width="93" height="39"/>
@@ -123,7 +129,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Recipes" image="filemenu.and.selection" catalog="system" id="5gs-OE-8XK">
                             <connections>
-                                <segue destination="Z53-3w-zHo" kind="show" id="aI4-6l-eX5"/>
+                                <segue destination="tN4-Mt-tdI" kind="show" id="HZL-wG-EfL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -137,20 +143,63 @@
             <point key="canvasLocation" x="-1023.1884057971015" y="-602.00892857142856"/>
         </scene>
         <!--Recipes-->
-        <scene sceneID="dvL-H0-5zu">
+        <scene sceneID="FKj-gm-bHM">
             <objects>
-                <viewController id="Z53-3w-zHo" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zGt-mL-WHj">
+                <viewController id="tN4-Mt-tdI" customClass="RecipeViewController" customModule="Smart_Pantry" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wUf-hx-O9m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="sE6-C6-4iT"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ck8-nS-lYr">
+                                <rect key="frame" x="150.5" y="142" width="113" height="30"/>
+                                <state key="normal" title="Add New Recipe"/>
+                                <connections>
+                                    <action selector="newRecipe:" destination="tN4-Mt-tdI" eventType="touchUpInside" id="bKN-cR-nGn"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vMs-ba-qfO">
+                                <rect key="frame" x="20" y="180" width="374" height="682"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeCell" textLabel="0bd-Vm-w2N" style="IBUITableViewCellStyleDefault" id="qD8-Hh-0xW">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qD8-Hh-0xW" id="O87-cY-2IO">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0bd-Vm-w2N">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xXa-8P-w4j"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vMs-ba-qfO" firstAttribute="bottom" secondItem="xXa-8P-w4j" secondAttribute="bottom" id="8eF-Tb-dE3"/>
+                            <constraint firstItem="vMs-ba-qfO" firstAttribute="leading" secondItem="xXa-8P-w4j" secondAttribute="leading" constant="20" id="BXw-Ym-aWo"/>
+                            <constraint firstItem="xXa-8P-w4j" firstAttribute="trailing" secondItem="vMs-ba-qfO" secondAttribute="trailing" constant="20" id="UtN-mI-bHk"/>
+                            <constraint firstItem="Ck8-nS-lYr" firstAttribute="centerX" secondItem="wUf-hx-O9m" secondAttribute="centerX" id="ck0-nT-dRc"/>
+                            <constraint firstItem="Ck8-nS-lYr" firstAttribute="top" secondItem="xXa-8P-w4j" secondAttribute="top" constant="20" id="g3K-Fl-dAU"/>
+                            <constraint firstItem="vMs-ba-qfO" firstAttribute="top" secondItem="Ck8-nS-lYr" secondAttribute="bottom" constant="8" symbolic="YES" id="wC1-4Q-ZK3"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Recipes" prompt="Smart Pantry" id="cFB-WV-dhn"/>
+                    <navigationItem key="navigationItem" title="Recipes" prompt="Smart Pantry" id="1va-12-wvy"/>
+                    <connections>
+                        <outlet property="recipeTable" destination="vMs-ba-qfO" id="Tbg-ME-owd"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Nbw-p9-pXA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mzh-rh-cEm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-51" y="-315"/>
+            <point key="canvasLocation" x="-36.231884057971016" y="-290.625"/>
         </scene>
         <!--Account-->
         <scene sceneID="Tod-ky-5v0">
