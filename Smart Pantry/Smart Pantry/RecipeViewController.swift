@@ -24,7 +24,50 @@ class RecipeViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func newRecipe(_ sender: Any) {
-        
+        let alert = UIAlertController(title: "New Recipe", message: "Enter the name and ingredients.", preferredStyle: .alert)
+        alert.addTextField{ (textField) in
+            textField.placeholder = "Name"
+        }
+        alert.addTextField{ (textField) in
+            textField.placeholder = "Ingredient #1"
+        }
+        alert.addTextField{ (textField) in
+            textField.placeholder = "Ingredient #2"
+        }
+        alert.addTextField{ (textField) in
+            textField.placeholder = "Ingredient #3"
+        }
+        alert.addTextField{ (textField) in
+            textField.placeholder = "Ingredient #4"
+        }
+        alert.addAction(UIAlertAction(title: "New Recipe", style: .default, handler: { (action) in
+            let name = alert.textFields?[0].text!
+            var ingr: [String] = []
+            if let i = alert.textFields?[1].text {
+                ingr.append(i)
+            }
+            if let i = alert.textFields?[2].text {
+                ingr.append(i)
+            }
+            if let i = alert.textFields?[3].text {
+                ingr.append(i)
+            }
+            if let i = alert.textFields?[4].text {
+                ingr.append(i)
+            }
+            let ingredients: NSArray = NSArray(object: ingr)
+            
+            self.insertRecipe(name: name!, ingredients: ingredients)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func insertRecipe(name: String, ingredients: NSArray) {
+        let recipe = NSEntityDescription.insertNewObject(forEntityName: "Recipe", into: self.managedObjectContext)
+        recipe.setValue(name, forKey: "name")
+        recipe.setValue(ingredients, forKey: "ingredients")
+        appDelegate.saveContext()
+        self.recipeTable.reloadData()
     }
     
     func fetchRecipes() -> [NSManagedObject] {
